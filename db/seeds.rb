@@ -1,5 +1,5 @@
 medicine_name = %w(Doril Dorflex Aspirina Enxaq Engov Viagra)
-20.times do |i|
+5.times do |i|
   Medicine.create!(
       name: medicine_name.shuffle.first,
       quantity: Faker::Number.number(digits: 2),
@@ -8,17 +8,17 @@ medicine_name = %w(Doril Dorflex Aspirina Enxaq Engov Viagra)
   )
 end
 
-20.times do |i|
+5.times do |i|
   Customer.create!(
       name: Faker::Name.name
   )
 end
-20.times do |i|
+5.times do |i|
   Cart.create!(
       customer: Customer.all.sample
   )
 end
-20.times do |i|
+5.times do |i|
   CartItem.create!(
       cart: Cart.all.sample,
       medicine: Medicine.all.sample,
