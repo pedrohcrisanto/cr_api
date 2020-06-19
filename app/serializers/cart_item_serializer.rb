@@ -11,11 +11,7 @@ class CartItemSerializer < ActiveModel::Serializer
   end
 
   def client
-    Customer.find(self.object.cart.customer_id).name.capitalize
+    Customer.find(self.object.cart.customer_id).name.split.each{|i| i.capitalize!}.join(' ')
   end
 
-  def total
-    medicine = Medicine.find(self.object.medicine_id)
-    total = self.object.quantity * medicine.value
-  end
 end

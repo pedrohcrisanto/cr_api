@@ -1,6 +1,15 @@
 class CartSerializer < ActiveModel::Serializer
-  attributes :id, :customer_id
+  attributes :id, :customer_name, :total
 
   belongs_to :customer
   has_many :cart_items
+
+  def customer_name
+    Customer.find(self.object.customer_id).name.split.each{|i| i.capitalize!}.join(' ')
+  end
+
+  def total
+    self.object.total
+
+  end
 end
