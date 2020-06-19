@@ -1,9 +1,8 @@
 class CustomerSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :descount
   has_many :carts
-  def attributes(*args)
-    h = super(*args)
-    h[:name] = object.name.capitalize
-    h
+  def name
+    object.name.capitalize
   end
+
 end
