@@ -10,5 +10,4 @@ class CartItem < ApplicationRecord
       medicine.update(stock: new_stock)
     end
   end
-  
 end

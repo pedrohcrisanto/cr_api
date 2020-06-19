@@ -10,6 +10,5 @@ class CartSerializer < ActiveModel::Serializer
 
   def total
     self.object.total
-
   end
 end
