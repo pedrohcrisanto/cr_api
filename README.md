@@ -25,6 +25,4 @@ $ rails s
 Abra o seu navegador(de preferência Chrome ou Firefox) e navegue para `localhost:3000/`
 
 
-```
-
 
