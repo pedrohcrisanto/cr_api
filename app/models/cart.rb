@@ -9,6 +9,6 @@ class Cart < ApplicationRecord
       medicine = Medicine.find(cart_item.medicine_id)
       total += cart_item.quantity * medicine.value
     end
-    return total
+    total
   end
 end
