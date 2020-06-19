@@ -8,7 +8,7 @@ $ git clone https://github.com/pedrohcrisanto/cr_api.git
 
 Instale as dependências
 ```sh
-$ cd /nei/
+$ cd /cr_api/
 $ bundle install
 ```
 
