@@ -9,4 +9,5 @@ RSpec.describe Medicine, type: :model do
       expect(subject.total).to eql 10.0
     end
   end
+
 end

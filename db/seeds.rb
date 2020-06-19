@@ -10,13 +10,14 @@ end
 
 5.times do |i|
   Customer.create!(
-      name: Faker::Name.name.downcase
+      name: Faker::Name.name
   )
 end
 5.times do |i|
-  Cart.create!(
+  cart = Cart.create!(
       customer: Customer.all.sample
   )
+  cart.cart_items.create!(cart: Cart.all.sample, medicine: Medicine.all.sample, quantity:Faker::Number.number(digits: 2) )
 end
 5.times do |i|
   CartItem.create!(
