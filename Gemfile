@@ -8,7 +8,7 @@ gem 'sqlite3'
 gem 'puma', '~> 3.11'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'bootsnap', '>= 1.1.0', require: false
-
+gem 'faker', '~> 2.0'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'

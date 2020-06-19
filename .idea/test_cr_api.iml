@@ -49,6 +49,7 @@
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.3, RVM: ruby-2.4.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.8.0, RVM: ruby-2.4.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot (v5.2.0, RVM: ruby-2.4.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faker (v2.12.0, RVM: ruby-2.4.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.10.0, RVM: ruby-2.4.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, RVM: ruby-2.4.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.6.0, RVM: ruby-2.4.0) [gem]" level="application" />
