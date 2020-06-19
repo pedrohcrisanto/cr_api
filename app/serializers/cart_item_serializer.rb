@@ -11,7 +11,7 @@ class CartItemSerializer < ActiveModel::Serializer
   end
 
   def client
-    Customer.find(self.object.cart.customer_id).name
+    Customer.find(self.object.cart.customer_id).name.capitalize
   end
 
   def total

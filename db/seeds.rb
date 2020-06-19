@@ -10,7 +10,7 @@ end
 
 5.times do |i|
   Customer.create!(
-      name: Faker::Name.name
+      name: Faker::Name.name.downcase
   )
 end
 5.times do |i|
