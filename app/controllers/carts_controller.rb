@@ -9,15 +9,6 @@ class CartsController < ApplicationController
     @cart.cart_items.build
   end
 
-  def create
-    @cart = Cart.new(cart_params)
-
-      if @cart.save
-        render json: @cart, status: :created, localtion: @cart
-      else
-        render json: @cart.errors, status: :unprocessable_entity
-      end
-  end
   private
   def set_cart
     @cart = Cart.find(params[:id])

@@ -7,7 +7,7 @@ class CartItem < ApplicationRecord
     medicine = Medicine.find(self.medicine_id)
     new_stock = medicine.stock - self.quantity
     if new_stock >= 0
-      medicine.update(stock: new_stock)
+      medicine.update_columns(stock: new_stock)
     end
   end
 end

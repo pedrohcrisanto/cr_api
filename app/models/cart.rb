@@ -5,7 +5,7 @@ class Cart < ApplicationRecord
   def total
     total = 0
     self.cart_items.each do |cart_item|
-      total += cart_item.quantity *  Medicine.find(cart_item.medicine_id).value
+      total += cart_item.quantity * Medicine.find(cart_item.medicine_id).value
     end
     total
   end
