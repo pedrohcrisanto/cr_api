@@ -3,11 +3,9 @@ class Cart < ApplicationRecord
   has_many :cart_items
 
   def total
-    cart_items = self.cart_items
     total = 0
-    cart_items.each do |cart_item|
-      medicine = Medicine.find(cart_item.medicine_id)
-      total += cart_item.quantity * medicine.value
+    self.cart_items.each do |cart_item|
+      total += cart_item.quantity *  Medicine.find(cart_item.medicine_id).value
     end
     total
   end
