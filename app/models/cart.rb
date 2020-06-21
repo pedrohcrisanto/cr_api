@@ -10,7 +10,7 @@ class Cart < ApplicationRecord
     total
   end
 
-  def discount
+  def total_discount
       case self.cart_items.ids.uniq.size
       when 1
         total_discount = self.total
@@ -24,5 +24,21 @@ class Cart < ApplicationRecord
         total_discount = self.total - (self.total * 0.25)
       end
       total_discount
+  end
+
+  def discount
+    case self.cart_items.ids.uniq.size
+    when 1
+      discount = 0
+    when 2
+      discount = 0.05
+    when 3
+      discount = 0.1
+    when 4
+      discount = 0.2
+    else
+      discount = 0.25
+    end
+    discount
   end
 end

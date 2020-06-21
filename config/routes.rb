@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :customers
-  resources :cart_items
-  resources :carts
+  resources :customers, only: [:index]
+  resources :cart_items, only: [:index]
+  resources :carts, only: [:index, :new]
   root "carts#index"
 end
