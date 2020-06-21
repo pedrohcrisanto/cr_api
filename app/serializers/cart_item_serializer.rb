@@ -1,5 +1,6 @@
 class CartItemSerializer < ActiveModel::Serializer
   attributes :id, :client, :medicine_name, :quantity, :value
+
   belongs_to :cart
   belongs_to :medicine
 
