@@ -11,7 +11,7 @@ class Cart < ApplicationRecord
   end
 
   def total_discount
-      case self.cart_items.ids.uniq.size
+      case self.cart_items.map(&:medicine_id).uniq.size
       when 1
         total_discount = self.total
       when 2
@@ -27,7 +27,7 @@ class Cart < ApplicationRecord
   end
 
   def discount
-    case self.cart_items.ids.uniq.size
+    case self.cart_items.map(&:medicine_id).uniq.size
     when 1
       discount = 0
     when 2
