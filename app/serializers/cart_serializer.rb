@@ -25,7 +25,6 @@ class CartSerializer < ActiveModel::Serializer
     when 0.25
       discount = "25%"
     end
-    discount
   end
 
   def total

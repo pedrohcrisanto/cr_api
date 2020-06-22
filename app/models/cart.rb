@@ -23,7 +23,6 @@ class Cart < ApplicationRecord
       else
         total_discount = self.total - (self.total * 0.25)
       end
-      total_discount
   end
 
   def discount
@@ -39,6 +38,5 @@ class Cart < ApplicationRecord
     else
       discount = 0.25
     end
-    discount
   end
 end
