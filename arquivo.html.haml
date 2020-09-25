@@ -1,0 +1,74 @@
+= simple_form_for [:backoffice, @deliveryman] do |f|
+  .row
+    .col-md-6.col-sm-12
+      %h5.mb-4
+        %i.mdi.mdi-account
+        = t("backoffice.deliverymen.form.basic_data", steps: deliveryman_form_step_number(1))
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :tax_number, input_html: {class: 'cpf-mask'}
+      = f.input :birth_date, as: :string, input_html: {class: 'date-mask-pt-br',
+                                                       value: @deliveryman.birth_date&.strftime('%d/%m/%Y')}
+      = f.input :password, required: action_name == 'new' || action_name == 'create'
+      = f.input :password_confirmation
+      = render '/shared/checkbox_field', f: f, attribute: :insured
+      %hr
+      %h5.mb-4
+        %i.mdi.mdi-phone
+        = t("backoffice.deliverymen.form.contact_data", steps: deliveryman_form_step_number(2))
+      = f.input :email
+      = f.input :phone
+      %hr
+      %h5.mb-4
+        %i.mdi.mdi-map-marker
+        = t("backoffice.deliverymen.form.address_data", steps: deliveryman_form_step_number(3))
+      = f.simple_fields_for :address do |af|
+        = af.input :zipcode, input_html: {class: 'zipcode-mask'}
+        = af.input :street
+        = af.input :number
+        = af.input :neighborhood
+        = af.input :complement
+        = af.input :state, input_html: {readonly: :readonly}
+        = af.input :city, input_html: {readonly: :readonly}
+        = af.input :country_id, as: :string, input_html: {value: 'Brasil', readonly: :readonly}
+        = af.input :country_id, as: :hidden, input_html: {value: Country.find_by_initials('BR').id}
+        -# = af.input :country_id, as: :select, input_html: {readonly: :readonly}
+        -#                         collection: Country.all,
+        -#                         selected: Country.find_by_initials('BR').id,
+        -#                         input_html: {disabled: 'disabled'}
+      %hr
+      %h5.mb-4
+        %i.mdi.mdi-truck
+        = t("backoffice.deliverymen.form.vehicle_data", steps: deliveryman_form_step_number(4))
+      = f.simple_fields_for :vehicle do |vf|
+        = vf.input :vehicle_type_id, as: :select, collection: @current_entrepreneur.vehicle_types
+        = vf.input :model
+        = vf.input :color
+        = vf.input :model_year, as: :string, input_html: {class: 'year-mask'}
+        = vf.input :plate
+
+      - @custom_sections.each_with_index do |custom_section, i|
+        %hr
+        %h5.mb-4
+          %i.mdi.mdi-information
+          = custom_section.name
+          = " - #{deliveryman_form_step_number(i+5)}"
+        = f.simple_fields_for :custom_field_values, CustomFieldValue.by_section(@custom_field_values, custom_section) do |csf|
+          = csf.hidden_field :id
+          = csf.hidden_field :custom_field_id
+          = csf.input csf.object.custom_field.file? ? :file : :value, label: csf.object.custom_field.name,
+                              required: csf.object.custom_field.required,
+                              as: csf.object.custom_field.file? ? :file : :string,
+                              input_html: {class: "custom-field-mask-#{csf.object.custom_field.custom_field_type}"}
+
+      .text-right
+        = link_to t('cancel'), backoffice_deliverymen_path, class: 'mr-3'
+        = f.button :submit, class: 'btn btn-primary', value: t('save')
+
+      .right-sidebar-toggler-wrapper
+        = link_to '#', onclick: 'event.preventDefault(); $(this).closest("form").submit()' do
+          .sidebar-toggler{'data-toggle' => 'tooltip', 'data-original-title' => t('backoffice.deliverymen.save')}
+            %i.mdi.mdi-check-circle
+        = link_to backoffice_deliverymen_path do
+          .sidebar-toggler{'data-toggle' => 'tooltip', 'data-original-title' => t('back')}
+            %i.mdi.mdi-arrow-left
